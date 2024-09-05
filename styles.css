@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #8a7272c4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    gap: 10px;
+    margin: 20px auto;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    perspective: 1000px; /* Enable 3D perspective */
+    cursor: pointer;
+    position: relative; /* Position for absolute children */
+}
+
+.card-face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden; /* Hide the back face when flipped */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.front {
+    background-color: #fff;
+    color: transparent; /* Hide text on front face */
+    transform: rotateY(0deg); /* Front face is visible */
+}
+
+.back {
+    background-color: #4CAF50;
+    color: white; /* Show text color on the back face */
+    transform: rotateY(180deg); /* Back face is hidden */
+}
+
+.card.flipped .front {
+    transform: rotateY(-180deg); /* Flip front face */
+}
+
+.card.flipped .back {
+    transform: rotateY(0deg); /* Show back face */
+}
+
+.info {
+    margin-top: 20px;
+}
